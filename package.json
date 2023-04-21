@@ -1,14 +1,14 @@
 {
   "name": "validation_modal",
   "version": "1.0.0",
-  "description": "A simple class for easily utilizing SWAL2 in projects",
+  "description": "A simple class for facilitating SWAL2 use in projects",
   "main": "validation_modal.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/omidfarahani/validation_modal.git"
+    "url": "git+https://github.com/dizatech/validation_modal.git"
   },
   "keywords": [
     "sweet_alert",
@@ -18,7 +18,10 @@
   "author": "Omid Reza Vasheghani Farahani",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/omidfarahani/validation_modal/issues"
+    "url": "https://github.com/dizatech/validation_modal/issues"
   },
-  "homepage": "https://github.com/omidfarahani/validation_modal#readme"
+  "homepage": "https://github.com/dizatech/validation_modal#readme",
+  "dependencies": {
+    "sweetalert2": "^11.7.3"
+  }
 }
