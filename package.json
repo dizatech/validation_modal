@@ -1,0 +1,28 @@
+{
+  "name": "validation_modal",
+  "version": "1.0.0",
+  "description": "This is wrapper for displaying validation and success messages in Dizatech projects",
+  "main": "validation_modal.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dizatech/validation_modal.git"
+  },
+  "keywords": [
+    "SWAL2",
+    "SweetAlert",
+    "modal",
+    "validation"
+  ],
+  "author": "Omid Reza Vasheghani Farahani",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/dizatech/validation_modal/issues"
+  },
+  "homepage": "https://github.com/dizatech/validation_modal#readme",
+  "dependencies": {
+    "sweetalert2": "^11.10.8"
+  }
+}
