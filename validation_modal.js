@@ -73,8 +73,7 @@ export class ValidationModal{
         }
     }
 
-    showErrorModal(response, title){
-        let errors = response.responseJSON.errors
+    showErrorModal(errors, title){
         let errors_html = ''
         for( let k in errors ){
             if( errors.hasOwnProperty(k) ){
@@ -146,7 +145,8 @@ export class ValidationModal{
             allowOutsideClick: true,
             allowEscapeKey: true,
             allowEnterKey: true,
-            showConfirmButton: 'تایید'
+            showConfirmButton: true,
+            confirmButtonText: 'تایید'
         };
         if( Swal.isVisible() ){
             Swal.hideLoading()
@@ -189,5 +189,19 @@ export class ValidationModal{
                 }
             })
         })
+    }
+
+    handleAxiosError (error) {
+        if (error.response) {
+            if (error.response.status == 422) {
+                vm.showErrorModal(error.response.data.errors)
+            } else if (error.response.data && error.response.data.error_message) {
+                vm.showSingleError(error.response.data.error_message)
+            } else if (error.response.status >= 500 & error.response.status < 600) {
+                vm.showSingleError('درخواست انجام نشد. لطفا اطلاعات وارد شده را بررسی و مجددا تلاش کنید.')
+            } else {
+                vm.showSingleError('درخواست شما انجام نشد. لطفا مجددا تلاش کنید.')
+            }
+        }
     }
 }
