@@ -1,0 +1,12 @@
+{
+    "loading": "Loading ...",
+    "ok": "OK",
+    "error": "Request failed!",
+    "login": "Login",
+    "login_check_error": "To continue you have to login to your account.",
+    "login_register": "Login / Register",
+    "confirm": "Confirm",
+    "form_validation_error": "Please fix errors shown in form and retry.",
+    "general_error_retry": "Request failed. Please check your inputs and retry.",
+    "general_error": "Request failed. Please retry."
+}

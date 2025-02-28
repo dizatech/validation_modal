@@ -1,9 +1,18 @@
 import Swal from "sweetalert2"
+import en from "./translations/en.json"
+import fa_IR from "./translations/fa_IR.json"
+const TRANSLATIONS = { en, fa_IR }
 
 export class ValidationModal{
+    constructor(language = 'fa_IR') {
+        this.language = language
+        this.translations = TRANSLATIONS[this.language]
+    }
+
     showLoading(){
+        console.log('language')
         Swal.fire({
-            title: 'در حال اجرای درخواست ...',
+            title: this.translations.loading,
             allowOutsideClick: false,
             allowEscapeKey: false,
             didOpen: () => {
@@ -17,10 +26,10 @@ export class ValidationModal{
     }
 
     showSingleError(error, args){
-        let confirm_text = args && args.hasOwnProperty('confirm_text') ? args.confirm_text : 'متوجه شدم';
+        let confirm_text = args && args.hasOwnProperty('confirm_text') ? args.confirm_text : this.translations.ok;
         const options = {
             icon: 'error',
-            title: 'خطا در اجرای درخواست!',
+            title: this.translations.error,
             html: error,
             allowOutsideClick: true,
             allowEscapeKey: true,
@@ -48,13 +57,13 @@ export class ValidationModal{
     showLoginError(){
         const options = {
             icon: 'info',
-            title: 'ورود به حساب کاربری',
-            html: 'برای ادامه باید ثبت نام کرده و یا وارد حساب کاربری خود شوید.',
+            title: this.translations.login,
+            html: this.translations.login_check_error,
             allowOutsideClick: true,
             allowEscapeKey: true,
             allowEnterKey: true,
             showConfirmButton: true,
-            confirmButtonText: 'ثبت نام / ورود'
+            confirmButtonText: this.translations.login_register
         };
         if( Swal.isVisible() ){
             Swal.hideLoading()
@@ -81,7 +90,7 @@ export class ValidationModal{
             }
         }
         if( typeof title == 'undefined' ){
-            title = 'خطا در اجرای درخواست!';
+            title = this.translations.error;
         }
         const options = {
             icon: 'error',
@@ -92,7 +101,7 @@ export class ValidationModal{
             allowEscapeKey: true,
             allowEnterKey: true,
             showConfirmButton: true,
-            confirmButtonText: 'تایید'
+            confirmButtonText: this.translations.confirm
         };
         if( Swal.isVisible() ){
             Swal.hideLoading()
@@ -119,14 +128,14 @@ export class ValidationModal{
 
         const options = {
             icon: 'error',
-            title: 'خطا در اجرای درخواست!',
-            html: 'لطفا خطاهای نمایش داده شده در فرم را رفع کرده و مجددا تلاش کنید.',
+            title: this.translations.error,
+            html: this.translations.form_validation_error,
             backdrop: true,
             allowOutsideClick: true,
             allowEscapeKey: true,
             allowEnterKey: true,
             showConfirmButton: true,
-            confirmButtonText: 'تایید'
+            confirmButtonText: this.translations.confirm
         };
         if( Swal.isVisible() ){
             Swal.hideLoading()
@@ -146,7 +155,7 @@ export class ValidationModal{
             allowEscapeKey: true,
             allowEnterKey: true,
             showConfirmButton: true,
-            confirmButtonText: 'تایید'
+            confirmButtonText: this.translations.confirm
         };
         if( Swal.isVisible() ){
             Swal.hideLoading()
@@ -198,9 +207,9 @@ export class ValidationModal{
             } else if (error.response.data && error.response.data.error_message) {
                 vm.showSingleError(error.response.data.error_message)
             } else if (error.response.status >= 500 & error.response.status < 600) {
-                vm.showSingleError('درخواست انجام نشد. لطفا اطلاعات وارد شده را بررسی و مجددا تلاش کنید.')
+                vm.showSingleError(this.translations.general_error_retry)
             } else {
-                vm.showSingleError('درخواست شما انجام نشد. لطفا مجددا تلاش کنید.')
+                vm.showSingleError(this.translations.general_error)
             }
         }
     }

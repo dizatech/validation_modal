@@ -1,6 +1,6 @@
 {
   "name": "validation_modal",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "This is wrapper for displaying validation and success messages in Dizatech projects",
   "main": "validation_modal.js",
   "scripts": {
