@@ -10,7 +10,6 @@ export class ValidationModal{
     }
 
     showLoading(){
-        console.log('language')
         Swal.fire({
             title: this.translations.loading,
             allowOutsideClick: false,
