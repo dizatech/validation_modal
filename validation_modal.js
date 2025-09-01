@@ -165,16 +165,55 @@ export class ValidationModal{
         }
     }
 
-    showSuccessToast(message){
+    showToast(message, options){
+        const icon = options && options.hasOwnProperty('icon') ? options.icon : 'info'
+        const timer = options && options.hasOwnProperty('timer') ? options.timer : 3000
+        const toastPosition = options && options.hasOwnProperty('toastPosition') ? options.toastPosition : 'top-start'
+        let customClass = {}
+        if (options && options.hasOwnProperty('containerClass')) {
+            customClass['container'] = options.containerClass
+        }
+
         Swal.fire({
-            icon: 'success',
+            icon: icon,
             title: message,
             showConfirmButton: false,
             toast: true,
-            timer: 3000,
+            timer: timer,
             timerProgressBar: true,
-            position: 'top-start'
+            position: toastPosition,
+            customClass: customClass
         })
+    }
+
+    showSuccessToast(message, options){
+        if (typeof(options) == 'undefined') {
+            options = {}
+        }
+        options['containerClass'] = 'success'
+        options['icon'] = 'success'
+
+        this.showToast(message, options)
+    }
+
+    showErrorToast(message, options){
+        if (typeof(options) == 'undefined') {
+            options = {}
+        }
+        options['containerClass'] = 'error'
+        options['icon'] = 'error'
+
+        this.showToast(message, options)
+    }
+
+    showInfoToast(message, options){
+        if (typeof(options) == 'undefined') {
+            options = {}
+        }
+        options['containerClass'] = 'info'
+        options['icon'] = 'info'
+
+        this.showToast(message, options)
     }
 
     confirm(title, confirm_text, deny_text, options){
