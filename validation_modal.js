@@ -158,10 +158,18 @@ export class ValidationModal{
         };
         if( Swal.isVisible() ){
             Swal.hideLoading()
-            Swal.update(options)
+            return new Promise((resolve) => {
+                Swal.fire(options).then((result) => {
+                    resolve(result)
+                })
+            })
         }
         else{
-            Swal.fire(options)
+            return new Promise((resolve) => {
+                Swal.fire(options).then((result) => {
+                    resolve(result)
+                })
+            })
         }
     }
 
