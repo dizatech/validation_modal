@@ -177,6 +177,8 @@ export class ValidationModal{
         const icon = options && options.hasOwnProperty('icon') ? options.icon : 'info'
         const timer = options && options.hasOwnProperty('timer') ? options.timer : 3000
         const toastPosition = options && options.hasOwnProperty('toastPosition') ? options.toastPosition : 'top-start'
+        const showConfirmButton = options && options.hasOwnProperty('showConfirmButton') ? options.showConfirmButton : false
+        const showCloseButton = options && options.hasOwnProperty('showCloseButton') ? options.showCloseButton : false
         let customClass = {}
         if (options && options.hasOwnProperty('containerClass')) {
             customClass['container'] = options.containerClass
@@ -185,7 +187,8 @@ export class ValidationModal{
         Swal.fire({
             icon: icon,
             title: message,
-            showConfirmButton: false,
+            showConfirmButton: showConfirmButton,
+            showCloseButton: showCloseButton
             toast: true,
             timer: timer,
             timerProgressBar: true,
