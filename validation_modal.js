@@ -188,7 +188,7 @@ export class ValidationModal{
             icon: icon,
             title: message,
             showConfirmButton: showConfirmButton,
-            showCloseButton: showCloseButton
+            showCloseButton: showCloseButton,
             toast: true,
             timer: timer,
             timerProgressBar: true,
